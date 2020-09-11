@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Opgave 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Using map to create list’s (ul’s, tables etc.)</h1>
+        <h3>Task a)</h3>
+
+        <div id="div1"></div>
+        <div classname="row">
+            <input id="myInput"/>
+            <button type="submit" id="myBtn1">Add name</button>
+            <button type="submit" id="myBtn2">Remove first</button>
+            <button type="submit" id="myBtn3">Remove last</button>
+            <div>
+
+                <script>
+                    var names = ["Lars", "Jan", "Peter", "Bo", "Frederik"];
+
+                    let list = names.map(function (name) {
+                        return "<li>" + name + "</li>";
+                    });
+
+                    document.getElementById("div1").innerHTML = "<ul>" + list.join("\n") + "</ul>";
+
+                    // Other working one-line method.
+//                    document.body.innerHTML = "<ul>" + names.map(function (name) {
+//                        return "<li>" + name + "</li>";
+//                    }) + "</ul>";
+
+                    //add name function
+                    document.getElementById("myBtn1").addEventListener("click",
+                            function () {
+                                input = document.getElementById('myInput').value;
+                                names.push(input);
+                                console.log(names);
+                                document.getElementById("div1").innerHTML = "<ul>" + names.map(function (name) {
+                                    return "<li>" + name + "</li>";
+                                }).join("") + "</ul>";
+                            });
+
+                    //Remove first
+                    document.getElementById("myBtn2").addEventListener("click",
+                            function () {
+                                removeFirst = document.getElementById('myBtn2').value;
+                                names.shift();
+                                console.log(names);
+                                document.getElementById("div1").innerHTML = "<ul>" + names.map(function (name) {
+                                    return "<li>" + name + "</li>";
+                                }).join("") + "</ul>";
+                            });
+
+                    //Remove last
+                    document.getElementById("myBtn3").addEventListener("click",
+                            function () {
+                                removeLast = document.getElementById('myBtn3').value;
+                                names.pop();
+                                console.log(names);
+                                document.getElementById("div1").innerHTML = "<ul>" + names.map(function (name) {
+                                    return "<li>" + name + "</li>";
+                                }).join("") + "</ul>";
+                            });
+
+                </script>
+                </body>
+                </html>

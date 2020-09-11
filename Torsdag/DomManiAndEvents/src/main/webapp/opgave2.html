@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>.click {width: 25px; height: 25px;background-color:yellow; margin:1px;}</style>
+        <title>Opgave 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Event Bubbling and event arguments</h1>
+        <h3>Task a)</h3>
+        <div id="outer1">
+            <div id="1" class="click">div1</div>
+            <div id="2" class="click">div2</div>
+        </div>
+        <script>
+            let alldivs = document.getElementById("outer1").addEventListener("click", function (e) {
+                var target = e.target;
+                console.log("hej med dig " + target.id);
+            });
+        </script>
+        
+        <br>
+        <h3>Task b)</h3>
+        <div id="outer2">
+            <div id="div4">div4</div>
+            <div id="div5">div5</div>
+            <div id="div6">div6</div>
+            
+            <p id="mitP"></p>
+            
+        </div>
+        <script>
+            var outer = document.getElementById("outer2");
+            outer.onclick = function (e) {
+                console.log("Clicked");
+                var me = this;
+                var target = e.target;
+                console.log(me.id);
+                console.log(target.id);
+                
+                document.getElementById("mitP").innerHTML = target.id;
+            };
+        </script>
+    </body>
+</html>
